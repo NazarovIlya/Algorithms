@@ -8,7 +8,8 @@ int[] arrayForSort = new int[arr.Length];
 arr.CopyTo(arrayForSort, 0);
 
 //SortsInt.BubbleSort(arrayForSort);
-SortsInt.SelectSort(arrayForSort);
+//SortsInt.SelectSort(arrayForSort);
+SortsInt.HeapSort(arrayForSort);
 
 Console.WriteLine(string.Join(", ", arrayForSort));
 //Console.WriteLine(string.Join(", ", arr));
