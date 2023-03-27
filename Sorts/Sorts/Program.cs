@@ -4,8 +4,13 @@ int[] arr = new int[] { 6, 3, 9, 1, 0, -10, 2, 7 };
 
 Console.WriteLine(string.Join(", ", arr));
 
-SortsInt.BubbleSort(arr);
+int[] arrayForSort = new int[arr.Length];
+arr.CopyTo(arrayForSort, 0);
 
-Console.WriteLine(string.Join(", ", arr));
+//SortsInt.BubbleSort(arrayForSort);
+SortsInt.SelectSort(arrayForSort);
+
+Console.WriteLine(string.Join(", ", arrayForSort));
+//Console.WriteLine(string.Join(", ", arr));
 
 Console.ReadLine();

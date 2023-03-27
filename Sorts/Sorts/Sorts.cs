@@ -6,23 +6,47 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sorts;
-	public  class SortsInt 
+public class SortsInt
+{
+	public static int[] BubbleSort(int[] array)
 	{
-		public static int[] BubbleSort(int[] array)
+		for (int i = 0; i < array.Length; i++)
 		{
-			for (int i = 0; i < array.Length; i++)
+			for (int j = 0; j < array.Length - 1; j++)
 			{
-				for(int j = 0; j < array.Length - 1; j++)
+				if (array[j] > array[j + 1])
 				{
-					if (array[j] > array[j + 1])
-					{
-						int temp = array[j];
-						array[j] = array[j + 1];
-						array[j + 1] = temp;
-					}
+					int temp = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = temp;
 				}
 			}
-			return array;
 		}
+		return array;
 	}
+
+	public static int[] SelectSort(int[] array)
+	{
+		for (int i = 0; i < array.Length - 2; i++)
+		{
+			int minPosition = i;
+			for (int j = i + 1; j < array.Length - 1; j++)
+			{
+				if (array[j] < array[minPosition])
+				{
+					minPosition = j;
+				}
+			}
+			int temp = array[minPosition];
+			array[minPosition] = array[i];
+			array[i] = temp;
+		}
+		return array;
+	}
+
+	//public static int[] HeapSort(int[] array)
+	//{
+		
+	//} 
+}
 
