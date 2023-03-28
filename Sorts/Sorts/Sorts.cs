@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Sorts;
 public class SortsInt
 {
-	public static int[] BubbleSort(int[] array)
+	public static void BubbleSort(int[] array)
 	{
 		for (int i = 0; i < array.Length; i++)
 		{
@@ -22,10 +22,9 @@ public class SortsInt
 				}
 			}
 		}
-		return array;
 	}
 
-	public static int[] SelectSort(int[] array)
+	public static void SelectSort(int[] array)
 	{
 		for (int i = 0; i < array.Length; i++)
 		{
@@ -44,27 +43,22 @@ public class SortsInt
 				array[i] = temp;
 			}			
 		}
-		return array;
 	}
 
 	public static void InsertSort(int[] array)
 	{
-		
-	}
-
-	public static int[] HeapSort(int[] array)
-	{
-		for (int i = array.Length / 2 - 1; i >= 0; i--)
-			Heapify(array, array.Length, i);
-		for(int i = array.Length - 1; i >= 0; i--)
+		for(int i = 0; i < array.Length; i++)
 		{
-			int temp = array[0];
-			array[0] = array[i];
-			array[i] = temp;
-
-			Heapify(array, i, 0);
+			for(int j = i; j > 0; j--)
+			{
+				if (array[j - 1] > array[j])
+				{
+					int temp = array[j - 1];
+					array[j - 1] = array[j];
+					array[j] = temp;
+				}
+			}
 		}
-		return array;
 	}
 
 	public static void QuickSort(int[] array)
@@ -101,10 +95,24 @@ public class SortsInt
 
 		if (left < end)
 			QuickSort(array, left, end);
-		if (right < start)
+		if (start < end)
 			QuickSort(array, start, right);
+	}
 
-    }
+	public static void HeapSort(int[] array)
+	{
+		for (int i = array.Length / 2 - 1; i >= 0; i--)
+			Heapify(array, array.Length, i);
+		for (int i = array.Length - 1; i >= 0; i--)
+		{
+			int temp = array[0];
+			array[0] = array[i];
+			array[i] = temp;
+
+			Heapify(array, i, 0);
+		}
+	}
+
 	private static void Heapify(int[] array, int heapSize, int rootIndex) 
 	{
 		int largest = rootIndex;
