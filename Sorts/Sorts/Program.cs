@@ -9,7 +9,8 @@ arr.CopyTo(arrayForSort, 0);
 
 //SortsInt.BubbleSort(arrayForSort);
 //SortsInt.SelectSort(arrayForSort);
-SortsInt.HeapSort(arrayForSort);
+//SortsInt.HeapSort(arrayForSort);
+SortsInt.QuickSort(arrayForSort);
 
 Console.WriteLine(string.Join(", ", arrayForSort));
 //Console.WriteLine(string.Join(", ", arr));

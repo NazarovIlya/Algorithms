@@ -27,21 +27,29 @@ public class SortsInt
 
 	public static int[] SelectSort(int[] array)
 	{
-		for (int i = 0; i < array.Length - 2; i++)
+		for (int i = 0; i < array.Length; i++)
 		{
 			int minPosition = i;
-			for (int j = i + 1; j < array.Length - 1; j++)
+			for (int j = i + 1; j < array.Length; j++)
 			{
-				if (array[j] < array[minPosition])
+				if (array[j] <= array[minPosition])
 				{
 					minPosition = j;
 				}
 			}
-			int temp = array[minPosition];
-			array[minPosition] = array[i];
-			array[i] = temp;
+			if( minPosition != i)
+			{
+				int temp = array[minPosition];
+				array[minPosition] = array[i];
+				array[i] = temp;
+			}			
 		}
 		return array;
+	}
+
+	public static void InsertSort(int[] array)
+	{
+		
 	}
 
 	public static int[] HeapSort(int[] array)
@@ -58,6 +66,45 @@ public class SortsInt
 		}
 		return array;
 	}
+
+	public static void QuickSort(int[] array)
+	{
+		QuickSort(array, 0, array.Length - 1);
+	}
+
+	private static void QuickSort(int[] array, int start, int end)
+	{
+		int left = start;
+		int right = end;
+		int middle = array[(left + right) / 2];
+
+		do
+		{
+			while (array[left] < middle)
+				left++;
+			while (array[right] > middle)
+				right--;
+
+			if (left <= right)
+			{
+				if (left < right)
+				{
+					int temp = array[left];
+					array[left] = array[right];
+					array[right] = temp;
+				}
+				left++;
+				right--;
+			}
+		}
+		while (left <= right);
+
+		if (left < end)
+			QuickSort(array, left, end);
+		if (right < start)
+			QuickSort(array, start, right);
+
+    }
 	private static void Heapify(int[] array, int heapSize, int rootIndex) 
 	{
 		int largest = rootIndex;
