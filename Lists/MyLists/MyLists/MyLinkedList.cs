@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,9 +9,7 @@ namespace MyLists
 { 
 	internal class MyLinkedList<T>
 	{
-		SingleNode<T> head;
-
-		internal SingleNode<T> Head { get => head; set => head = value; }
+		internal SingleNode<T> Head { get; set; }
 		public void AddFirst(T value)
 		{
 			SingleNode<T> node = new SingleNode<T>(value);
@@ -31,5 +30,60 @@ namespace MyLists
 				lastNode.Next = node;
 			}
         }
+		public void InsertNode(SingleNode<T> node, T value)
+		{
+			SingleNode<T> next = node.Next;
+			SingleNode<T> newNode = new SingleNode<T>(value);
+			node.Next = newNode;
+			newNode.Next = next;
+		}
+
+		public void RemoveFirst()
+		{
+			if(Head != null)
+				Head = Head.Next;
+		}
+		public void RemoveLast()
+		{
+			if(Head != null)
+			{
+				SingleNode<T> node = Head;
+				while(node.Next != null)
+				{
+					if (node.Next.Next == null)
+					{
+						node.Next = null;
+						return;
+					}
+					node = node.Next;
+				}
+				Head = null;
+			}
+		}
+
+		public void Revers()
+		{
+			SingleNode<T> previous = null;
+			SingleNode<T> current = Head;
+			SingleNode<T> temp = null;
+			while (current != null)
+			{
+				temp = current.Next;
+				current.Next = previous;
+				previous = current;
+				current = temp;
+			}
+			Head = previous;
+		}
+		public SingleNode<T> SearchNode(T value)
+		{
+			SingleNode<T> node = Head;
+			while(node != null)
+			{
+				if(node.Value.Equals(value)) return node;
+				node = node.Next;
+			}
+			return null;
+		}
 	}
 }
