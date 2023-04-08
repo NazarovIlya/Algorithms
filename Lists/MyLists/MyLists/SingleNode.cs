@@ -9,8 +9,8 @@ namespace MyLists
 {
 	internal class SingleNode<T>
 	{
-		protected T value;
-		protected SingleNode<T> next;
+		private T value;
+		private SingleNode<T> next;
 
 		public T Value { get => value; set => this.value = value; }
 		public SingleNode<T> Next { get => next; set => next = value; }
