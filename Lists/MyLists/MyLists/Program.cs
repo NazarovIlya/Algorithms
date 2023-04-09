@@ -1,6 +1,6 @@
 ﻿using MyLists;
 
-MyLinkedList<int> ml = new MyLinkedList<int>();
+DoubleLinkedList<int> ml = new DoubleLinkedList<int>();
 
 ml.AddFirst(1);
 ml.AddFirst(2);
@@ -18,20 +18,20 @@ ml.AddLast(40);
 Console.WriteLine("Список содержит:");
 ListUtils.PrintList(ml);
 
-ml.RemoveFirst();
-ml.RemoveLast();
+//ml.RemoveFirst();
+//ml.RemoveLast();
 
-Console.WriteLine("Список содержит уделния:");
-ListUtils.PrintList(ml);
+//Console.WriteLine("Список содержит уделния:");
+//ListUtils.PrintList(ml);
 
-SingleNode<int> node = ml.SearchNode(1);
-ml.InsertNode(node, 500);
-Console.WriteLine("Список содержит после вставки:");
-ListUtils.PrintList(ml);
+//SingleNode<int> node = ml.SearchNode(1);
+//ml.InsertNode(node, 500);
+//Console.WriteLine("Список содержит после вставки:");
+//ListUtils.PrintList(ml);
 
-Console.WriteLine("Список после разворота:");
-ml.Revers();
-ListUtils.PrintList(ml);
+//Console.WriteLine("Список после разворота:");
+//ml.Revers();
+//ListUtils.PrintList(ml);
 
 Console.WriteLine();
 
