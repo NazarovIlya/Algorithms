@@ -1,6 +1,7 @@
 ﻿using MyLists;
 
 DoubleLinkedList<int> ml = new DoubleLinkedList<int>();
+ListUtils<DoubleLinkedList<int>, int> utilsD = new ListUtils<DoubleLinkedList<int>, int>();
 
 ml.AddFirst(1);
 ml.AddFirst(2);
@@ -8,7 +9,7 @@ ml.AddFirst(3);
 ml.AddFirst(4);
 
 Console.WriteLine("Список содержит:");
-ListUtils.PrintList<DoubleLinkedList<int>, int>(ml);
+utilsD.PrintList(ml);
 
 ml.AddLast(1);
 ml.AddLast(20);
@@ -16,7 +17,7 @@ ml.AddLast(30);
 ml.AddLast(40);
 
 Console.WriteLine("Список содержит:");
-ListUtils.PrintList<DoubleLinkedList<int>, int>(ml);
+utilsD.PrintList(ml);
 
 //ml.RemoveFirst();
 //ml.RemoveLast();

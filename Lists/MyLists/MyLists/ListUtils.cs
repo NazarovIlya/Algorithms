@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyLists
 {
-	internal class ListUtils
+	internal class ListUtils<T, userT>
+		where T : class
+		where userT : struct
 	{
-		public static void PrintList<T, userT>(T list)
+		public void PrintList(T list)
 		{
 			if (list is SingleLinkedList<T>)
 				PrintSList(list as SingleLinkedList<userT>);
@@ -18,7 +20,7 @@ namespace MyLists
 
 
 		}
-		private static void PrintSList<T>(SingleLinkedList<T> list)
+		private void PrintSList<T>(SingleLinkedList<T> list)
 		{
 			var item = list.Head;
 
@@ -28,7 +30,7 @@ namespace MyLists
 				item = item.Next;
 			}
 		}
-		private static void PrintDList<T>(DoubleLinkedList<T> list)
+		private void PrintDList<T>(DoubleLinkedList<T> list)
 		{
 			var item = list.Head;
 
