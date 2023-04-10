@@ -8,7 +8,17 @@ namespace MyLists
 {
 	internal class ListUtils
 	{
-		public static void PrintList<T>(SingleLinkedList<T> list)
+		public static void PrintList<T, userT>(T list)
+		{
+			if (list is SingleLinkedList<T>)
+				PrintSList(list as SingleLinkedList<userT>);
+			if (list is DoubleLinkedList<userT>)
+				PrintDList(list as DoubleLinkedList<userT>);
+			else throw new Exception("Unknow type of list.");
+
+
+		}
+		private static void PrintSList<T>(SingleLinkedList<T> list)
 		{
 			var item = list.Head;
 
@@ -18,7 +28,7 @@ namespace MyLists
 				item = item.Next;
 			}
 		}
-		public static void PrintList<T>(DoubleLinkedList<T> list)
+		private static void PrintDList<T>(DoubleLinkedList<T> list)
 		{
 			var item = list.Head;
 

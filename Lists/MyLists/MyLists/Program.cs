@@ -8,7 +8,7 @@ ml.AddFirst(3);
 ml.AddFirst(4);
 
 Console.WriteLine("Список содержит:");
-ListUtils.PrintList(ml);
+ListUtils.PrintList<DoubleLinkedList<int>, int>(ml);
 
 ml.AddLast(1);
 ml.AddLast(20);
@@ -16,7 +16,7 @@ ml.AddLast(30);
 ml.AddLast(40);
 
 Console.WriteLine("Список содержит:");
-ListUtils.PrintList(ml);
+ListUtils.PrintList<DoubleLinkedList<int>, int>(ml);
 
 //ml.RemoveFirst();
 //ml.RemoveLast();
