@@ -9,7 +9,6 @@ namespace Trees
 	internal class RBTree<T>
 	{
 		TreeNode<T> Root { get; set; }
-
 		public bool SearchNode(T value)
 		{
 			TreeNode<T> node = SearchNode(Root, value);
