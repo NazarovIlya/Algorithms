@@ -2,4 +2,8 @@
 
 Console.Clear();
 
-RBTree<int> tree = new RBTree<int>();
+LLRBTRee lLRBTree = new LLRBTRee();
+
+lLRBTree.AddChild(5);
+
+Console.WriteLine(lLRBTree.Root.Value);
