@@ -12,54 +12,62 @@ namespace Trees
 	internal class LLRBTRee
 	{
 		public LLRBNode Root { get; set; }
-		public void AddChild(int value)
+		public bool AddChild(int value)
 		{
 			if (Root != null)
 			{
-				AddChild(Root, value);
+				bool result = AddChild(Root, value);
 				Root = Rebalance(Root);
 				Root.Color = Color.BLACK;
+				return result;
 			}
 			else
 			{
 				Root = new LLRBNode();
 				Root.Color = Color.BLACK;
 				Root.Value = value;
+				return true;
 			}
 		}
 
-		private void AddChild(LLRBNode node, int value)
+		private bool AddChild(LLRBNode node, int value)
 		{
 			if (node.Value == value)
-				return;
-			else 
+			{
+				return false;
+			}
+			else
 			{
 				if (node.Value > value)
 				{
 					if (node.LeftChild != null)
 					{
-						AddChild(node.LeftChild, value);
+						bool result = AddChild(node.LeftChild, value);
 						node.LeftChild = Rebalance(node.LeftChild);
+						return result;
 					}
 					else
 					{
 						node.LeftChild = new LLRBNode();
 						node.LeftChild.Color = Color.RED;
 						node.LeftChild.Value = value;
+						return true;
 					}
 				}
 				else
 				{
 					if (node.RightChild != null)
 					{
-						AddChild(node.RightChild, value);
+						bool result = AddChild(node.RightChild, value);
 						node.RightChild = Rebalance(node.RightChild);
+						return result;
 					}
 					else
 					{
 						node.RightChild = new LLRBNode();
 						node.RightChild.Color = Color.RED;
 						node.RightChild.Value = value;
+						return true;
 					}
 				}
 			}
@@ -73,24 +81,20 @@ namespace Trees
 			do
 			{
 				needRebalance = false;
-				if (result.RightChild != null
-					&& result.RightChild.Color == Color.RED
-					&& (result.LeftChild == null || result.Color == Color.BLACK))
+				if (result.RightChild != null && result.RightChild.Color == Color.RED &&
+						(result.LeftChild == null || result.LeftChild.Color == Color.BLACK))
 				{
 					needRebalance = true;
 					result = RightSwap(result);
 				}
-				if (result.LeftChild != null
-					&& result.LeftChild.Color == Color.RED
-					&& (result.RightChild == null || result.Color == Color.RED))
+				if (result.LeftChild != null && result.LeftChild.Color == Color.RED &&
+						result.LeftChild.LeftChild != null && result.LeftChild.LeftChild.Color == Color.RED)
 				{
 					needRebalance = true;
 					result = LeftSwap(result);
 				}
-				if (result.LeftChild != null
-					&& result.LeftChild.Color == Color.RED
-					&& result.RightChild != null
-					&& result.RightChild.Color == Color.RED)
+				if (result.LeftChild != null && result.LeftChild.Color == Color.RED &&
+						result.RightChild != null && result.RightChild.Color == Color.RED)
 				{
 					needRebalance = true;
 					ColorSwap(result);
