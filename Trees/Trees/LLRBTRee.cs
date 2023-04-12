@@ -81,20 +81,24 @@ namespace Trees
 			do
 			{
 				needRebalance = false;
-				if (result.RightChild != null && result.RightChild.Color == Color.RED &&
-						(result.LeftChild == null || result.LeftChild.Color == Color.BLACK))
+				if (result.RightChild != null 
+					&& result.RightChild.Color == Color.RED 
+					&& (result.LeftChild == null || result.LeftChild.Color == Color.BLACK))
 				{
 					needRebalance = true;
 					result = RightSwap(result);
 				}
-				if (result.LeftChild != null && result.LeftChild.Color == Color.RED &&
-						result.LeftChild.LeftChild != null && result.LeftChild.LeftChild.Color == Color.RED)
+				if (result.LeftChild != null 
+					&& result.LeftChild.Color == Color.RED 
+					&& result.LeftChild.LeftChild != null && result.LeftChild.LeftChild.Color == Color.RED)
 				{
 					needRebalance = true;
 					result = LeftSwap(result);
 				}
-				if (result.LeftChild != null && result.LeftChild.Color == Color.RED &&
-						result.RightChild != null && result.RightChild.Color == Color.RED)
+				if (result.LeftChild != null 
+					&& result.LeftChild.Color == Color.RED 
+					&& result.RightChild != null 
+					&& result.RightChild.Color == Color.RED)
 				{
 					needRebalance = true;
 					ColorSwap(result);

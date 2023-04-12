@@ -13,7 +13,7 @@ lLRBTree.AddChild(9);
 
 
 
-Console.WriteLine(lLRBTree.Root);
+//Console.WriteLine(lLRBTree.Root);
 
 
 
@@ -21,12 +21,18 @@ Console.WriteLine(lLRBTree.Root);
 
 
 
-//void PostOrder(LLRBNode node)
-//{
-//	PostOrder(node.LeftChild);
-//	PostOrder(node.RightChild);
-//    Console.WriteLine(node.Value);
-//}
+void PostOrder(LLRBNode node, int deep)
+{
+	if(node != null)
+	{
+		Console.WriteLine($"{deep} -> {node.Value}");
+		deep++;
+		PostOrder(node.LeftChild, deep);
+		PostOrder(node.RightChild, deep);
+		
+	}
 
+}
 
-//PostOrder(lLRBTree.Root);
+LLRBNode node = lLRBTree.Root;
+PostOrder(node, 1);
