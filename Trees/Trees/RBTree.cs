@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 namespace Trees
 {
-	internal class RBTree<T>
+	internal class RBTree<T> 
 	{
-		TreeNode<T> Root { get; set; }
-		public bool SearchNode(T value)
+		RBTNode Root { get; set; }
+		public bool IsContains(int value)
 		{
-			TreeNode<T> node = SearchNode(Root, value);
+			RBTNode node = IsContains(Root, value);
 			if (node != null) { return true; }
 			else { return false; }
 		}
-		private TreeNode<T> SearchNode(TreeNode<T> node, T value)
+
+		private RBTNode IsContains(RBTNode node, int value)
 		{
-			if (node.Value.Equals(value))
+			if (node.Value == value)
 			{
 				return node;
 			}
 			else
 			{
-				foreach (TreeNode<T> child in node.Children)
+				foreach (RBTNode child in node.Children)
 				{
-					TreeNode<T> result = SearchNode(child, value);
+					RBTNode result = IsContains(child, value);
 					if (result != null)
 						return result;
 				}
