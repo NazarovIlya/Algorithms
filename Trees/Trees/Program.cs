@@ -14,7 +14,6 @@ lLRBTree.AddChild(9);
 
 
 Console.WriteLine(lLRBTree.Root);
-Console.WriteLine(lLRBTree.Root.RightChild);
 
 
 

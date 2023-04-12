@@ -68,10 +68,11 @@ namespace Trees
 		private LLRBNode Rebalance(LLRBNode node)
 		{
 			LLRBNode result = node;
-			bool needRebalance = false;
+			bool needRebalance;
 
 			do
 			{
+				needRebalance = false;
 				if (result.RightChild != null
 					&& result.RightChild.Color == Color.RED
 					&& (result.LeftChild == null || result.Color == Color.BLACK))
@@ -111,10 +112,10 @@ namespace Trees
 		}
 		private LLRBNode LeftSwap(LLRBNode node)
 		{
-			LLRBNode leftChild = node.RightChild;
-			LLRBNode betweenNode = leftChild.LeftChild;
+			LLRBNode leftChild = node.LeftChild;
+			LLRBNode betweenChild = leftChild.RightChild;
 			leftChild.RightChild = node;
-			node.LeftChild = betweenNode;
+			node.LeftChild = betweenChild;
 			leftChild.Color = node.Color;
 			node.Color = Color.RED;
 
@@ -123,7 +124,7 @@ namespace Trees
 		private void ColorSwap(LLRBNode node)
 		{
 			node.RightChild.Color = Color.BLACK;
-			node.LeftChild.Color = Color.RED;
+			node.LeftChild.Color = Color.BLACK;
 			node.Color = Color.RED;
 		}
 	}
