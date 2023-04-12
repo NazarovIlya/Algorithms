@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Trees
 {
@@ -13,7 +14,7 @@ namespace Trees
 		public LLRBNode Root { get; set; }
 		public void AddChild(int value)
 		{
-			if(Root != null)
+			if (Root != null)
 			{
 				AddChild(Root, value);
 				Root = Rebalance(Root);
@@ -26,16 +27,40 @@ namespace Trees
 				Root.Value = value;
 			}
 		}
+
 		private void AddChild(LLRBNode node, int value)
 		{
 			if (node.Value == value)
 				return;
-			else
+			else 
 			{
-				if(node.LeftChild != null)
+				if (node.Value > value)
 				{
-					AddChild(node.LeftChild, value);
-					node.LeftChild = Rebalance(node.LeftChild);
+					if (node.LeftChild != null)
+					{
+						AddChild(node.LeftChild, value);
+						node.LeftChild = Rebalance(node.LeftChild);
+					}
+					else
+					{
+						node.LeftChild = new LLRBNode();
+						node.LeftChild.Color = Color.RED;
+						node.LeftChild.Value = value;
+					}
+				}
+				else
+				{
+					if (node.RightChild != null)
+					{
+						AddChild(node.RightChild, value);
+						node.RightChild = Rebalance(node.RightChild);
+					}
+					else
+					{
+						node.RightChild = new LLRBNode();
+						node.RightChild.Color = Color.RED;
+						node.RightChild.Value = value;
+					}
 				}
 			}
 		}
@@ -47,21 +72,21 @@ namespace Trees
 
 			do
 			{
-				if(result.RightChild != null  
-					&& result.RightChild.Color == Color.RED 
+				if (result.RightChild != null
+					&& result.RightChild.Color == Color.RED
 					&& (result.LeftChild == null || result.Color == Color.BLACK))
 				{
-					needRebalance =	true;
+					needRebalance = true;
 					result = RightSwap(result);
 				}
-				if(result.LeftChild != null
+				if (result.LeftChild != null
 					&& result.LeftChild.Color == Color.RED
-					&&(result.RightChild == null || result.Color == Color.RED))
+					&& (result.RightChild == null || result.Color == Color.RED))
 				{
 					needRebalance = true;
 					result = LeftSwap(result);
 				}
-				if(result.LeftChild != null
+				if (result.LeftChild != null
 					&& result.LeftChild.Color == Color.RED
 					&& result.RightChild != null
 					&& result.RightChild.Color == Color.RED)
@@ -69,7 +94,7 @@ namespace Trees
 					needRebalance = true;
 					ColorSwap(result);
 				}
-			} while(needRebalance);
+			} while (needRebalance);
 			return result;
 		}
 

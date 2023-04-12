@@ -15,7 +15,7 @@ namespace Trees
 
 		public override string ToString()
 		{
-			return String.Format("{Value: {0}, Color: {1}}", this.Value, this.Color);
+			return Value.ToString();
 		}
 	}
 }
